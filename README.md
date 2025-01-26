@@ -54,6 +54,28 @@ with instructions on how to:
 
 - Contribute to the project.
 
+## Setup
+
+### Run the dev server
+
+```sh
+npm run dev
+```
+
+### Deploying
+
+Build app for production
+
+```sh
+npm run build
+```
+
+Run the app in production mode
+
+```sh
+npm start
+```
+
 ## Contributing
 
 Contributions are welcome! If you’d like to suggest improvements, report bugs,
