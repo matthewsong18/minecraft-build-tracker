@@ -1,4 +1,4 @@
-# Wingmen Builds
+# wingmen-builds
 
 A tool designed for Wingmen to track builds and manage the items required for
 each build.
@@ -18,11 +18,13 @@ required items.
 
 - Detailed item requirement tree showing dependencies for crafted items.
 
+- Dynamic requirements (Clicking an item will display the items required to
+  craft the desired quantity of the item).
+
+- Track item gathering progress by updating how much items you have already
+  gathered.
+
 - Suggested sources for items (e.g., farms or locations).
-
-- Public build lists visible to others who want to help.
-
-- Collaborative support for gathering items.
 
 ## Roadmap
 
@@ -42,19 +44,11 @@ This section outlines planned milestones for the project:
 
 - Allow users to suggest new item sources.
 
-- Getting Started
+## Deployment
 
 Since this is an early-stage project, the repository is currently under
 development. Once the initial version is ready, this section will be updated
 with instructions on how to:
-
-- Set up the development environment.
-
-- Run the project locally.
-
-- Contribute to the project.
-
-## Setup
 
 ### Run the dev server
 
@@ -62,9 +56,9 @@ with instructions on how to:
 npm run dev
 ```
 
-### Deploying
+### Deploy app for production
 
-Build app for production
+Build the app
 
 ```sh
 npm run build
@@ -75,11 +69,6 @@ Run the app in production mode
 ```sh
 npm start
 ```
-
-## Contributing
-
-Contributions are welcome! If you’d like to suggest improvements, report bugs,
-or contribute code, feel free to open an issue or submit a pull request.
 
 ## Authors
 

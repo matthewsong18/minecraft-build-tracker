@@ -1,0 +1,70 @@
+.
+├── core/
+│   └── domain/                  # Business logic and rules
+│       ├── build/               # Build Aggregate
+│       │   ├── Build.ts         # Build entity (id, name, items, builders)
+│       │   ├── BuildService.ts  # Calculates total requirements, enforces rules
+│       │   └── repository.ts    # Interface: `BuildRepository`
+│       │
+│       └── item/                # Item Aggregate
+│           ├── Item.ts          # Item entity (id, name, components/dependencies)
+│           ├── Source.ts        # Source entity (location, warp command, etc.)
+│           └── repository.ts    # Interfaces: `ItemRepository`, `SourceRepository`
+│
+├── features/
+│   ├── item-dependency-management/  # Vertical Slice 1: Dependency Trees
+│   │   ├── components/              # UI components
+│   │   │   └── DependencyTree.tsx   # Visualizes item requirements
+│   │   ├── actions/                 # Remix actions
+│   │   │   └── updateDependency.ts  # Handles adding/removing dependencies
+│   │   └── services/                # Business logic
+│   │       └── DependencyCalculator.ts  # Recursive dependency resolver
+│   │
+│   ├── crafting-recipes/            # Vertical Slice 2: Recipe Management
+│   │   ├── components/
+│   │   │   └── RecipeEditor.tsx     # UI for editing item components
+│   │   ├── actions/
+│   │   │   └── updateRecipe.ts      # Handles recipe updates
+│   │   └── validators/              # Business rules
+│   │       └── RecipeValidator.ts   # Ensures no circular dependencies
+│   │
+│   ├── build-tracking/              # Vertical Slice 3: Progress Tracking
+│   │   ├── components/
+│   │   │   └── ProgressTracker.tsx  # UI for updating gathered items
+│   │   └── services/
+│   │       └── ProgressService.ts   # Syncs progress with build totals
+│   │
+│   ├── item-sources/                # Vertical Slice 4: Source Suggestions
+│   │   ├── components/
+│   │   │   └── SourceMap.tsx        # Displays source locations
+│   │   └── services/
+│   │       └── SourceRecommender.ts # Recommends sources based on item
+│   │
+│   └── public-builds/               # Vertical Slice 5: Public Lists
+│       ├── components/
+│       │   └── PublicBuildList.tsx  # UI for browsing builds
+│       └── services/
+│           └── BuildVisibility.ts   # Manages public/private build settings
+│
+├── infrastructure/
+│   ├── repositories/                # Concrete implementations
+│   │   ├── SupabaseBuildRepository.ts  # Implements `BuildRepository`
+│   │   └── SupabaseItemRepository.ts   # Implements `ItemRepository`
+│   └── di/                          # Dependency injection setup
+│       └── container.ts             # Configures repositories/services
+│
+├── routes/
+│   ├── builds/                      # Remix routes for builds
+│   │   ├── $buildId/
+│   │   │   └── index.tsx           # Build detail page
+│   │   └── new.tsx                 # Create a build
+│   └── items/
+│       └── $itemId.tsx             # Item detail page
+│
+└── tests/
+    ├── core/                        # Domain logic tests
+    │   └── build/
+    │       └── BuildService.test.ts  # Tests requirement calculations
+    └── features/                    # Feature tests
+        └── item-dependency-management/
+            └── DependencyCalculator.test.ts
